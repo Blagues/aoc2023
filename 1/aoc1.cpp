@@ -7,5 +7,4 @@
 int main() {
     using namespace std;
     std::vector<std::string> data = readData(0);
-
 }
