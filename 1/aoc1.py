@@ -9,7 +9,6 @@ with open('../data/1.txt') as file:
         indices = {line.index(char): str_to_int[char] for i, char in enumerate(['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']) if char in line}
         indices.update({line.rindex(char): str_to_int[char] for i, char in enumerate(['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']) if char in line})
 
-        print(line, indices)
         if len(indices) == 0:
             number = 0
         elif len(indices) == 1:
