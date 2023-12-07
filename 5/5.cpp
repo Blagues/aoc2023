@@ -12,18 +12,18 @@
 
 int main() {
     using namespace std;
-    vector<string> data = readData(5);
+    vector<string> data = readLines(5);
     vector<std::tuple<uint64_t, uint64_t, bool>> seeds;
 
 
-    vector<string> seedRanges = findAllRegex(data[0], R"(\d+)");
+    vector<string> seedRanges = getAllRegex(data[0], R"(\d+)");
     for (int i = 0; i < seedRanges.size(); i+=2 ) {
         seeds.emplace_back(stol(seedRanges[i]), stol(seedRanges[i]) + stol(seedRanges[i + 1]), false);
     }
 
     for (int i = 3; i < data.size(); i++) {
         string line = data[i];
-        vector<string> numbersInLine = findAllRegex(line, R"(\d+)");
+        vector<string> numbersInLine = getAllRegex(line, R"(\d+)");
 
 
         if (!numbersInLine.empty()) {

@@ -10,7 +10,7 @@
 
 int main() {
     using namespace std;
-    vector<string> lines = readData(4);
+    vector<string> lines = readLines(4);
 
     vector<int> copies;
 
@@ -23,7 +23,7 @@ int main() {
     for (int lineNr = 0; lineNr < lines.size(); lineNr++) {
         string line = lines[lineNr];
 
-        vector<string> numbers = findAllRegex(line, R"(\d+)");
+        vector<string> numbers = getAllRegex(line, R"(\d+)");
         vector<int> winningNumbers;
         vector<int> ticketNumbers;
 

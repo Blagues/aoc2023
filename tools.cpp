@@ -10,7 +10,7 @@
 #include <string>
 #include <regex>
 
-std::vector<std::string> readData(const int& day) {
+std::vector<std::string> readLines(const int& day) {
     std::string path = "../data/" + std::to_string(day) + ".txt";
     std::vector<std::string> lines;
     std::ifstream file(path);
@@ -29,29 +29,20 @@ std::vector<std::string> readData(const int& day) {
 }
 
 
-std::vector<std::vector<std::string>> splitString(const std::vector<std::string>& data, const std::string& delimiter) {
-    std::vector<std::vector<std::string>> result;
+std::vector<std::string >splitString(std::string& data, const std::string& delimiter) {
+    std::vector<std::string> result;
 
-    for (const auto& line : data) {
-        std::vector<std::string> temp;
-        std::string str = line;
-        size_t pos = 0;
-        std::string token;
-
-        while ((pos = str.find(delimiter)) != std::string::npos) {
-            token = str.substr(0, pos);
-            temp.push_back(token);
-            str.erase(0, pos + delimiter.length());
-        }
-
-        temp.push_back(str);
-        result.push_back(temp);
+    while (data.find(delimiter) != std::string::npos) {
+        result.push_back(data.substr(0, data.find(delimiter)));
+        data = data.substr(data.find(delimiter) + 1);
     }
+
+    result.push_back(data);
 
     return result;
 }
 
-std::vector<std::string> findAllRegex(const std::string& str, const std::string& regex) {
+std::vector<std::string> getAllRegex(const std::string& str, const std::string& regex) {
     std::vector<std::string> result;
 
     std::regex reg(regex);
